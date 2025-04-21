@@ -6,6 +6,9 @@
 
 const elemToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
+function elemRemoveActive(elem) {
+  elem.classList.remove("active");
+}
 
 
 /**
@@ -36,11 +39,23 @@ window.addEventListener("scroll", function () {
 const navToggleBtn = document.querySelector("[data-nav-toggle-btn]");
 const navbar = document.querySelector("[data-navbar]");
 
+
+const navLinks = document.querySelectorAll(".navbar-link");
+
+navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    // Collapse the navbar and toggle button when a link is clicked
+    navbar.classList.remove("active");
+    navToggleBtn.classList.remove("active");
+  });
+});
+
 navToggleBtn.addEventListener("click", function () {
 
   elemToggleFunc(navToggleBtn);
   elemToggleFunc(navbar);
-  elemToggleFunc(document.body);
+  // elemToggleFunc(document.body);
+
 
 });
 
